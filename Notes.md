@@ -53,3 +53,15 @@ The GreetingController is annotated with @RestController.
 The greeting method is annotated with @GetMapping to handle GET requests to the /greeting endpoint.
 
 The method returns a simple string, which will be converted to JSON and sent as the response body.
+
+### Steps to follow
+
+1. Go to Spring Initializr
+2. Choose the options of your preference. For Example, Select Project -> Maven , Language -> Java, Spring Boot -> 3.3.2, Group Id -> (to whome this project belogs to, eg. com.personal), Artifact -> (project name), Packaging -> Jar, Version -> 17 , Dependencies (Spring web, spring boot actuator, etc)
+3. Click Generate.
+4. Extract zip file to the path of your choice.
+5. Open IntelliJ and File -> Open -> (choose path)
+6. Make sure java version is 17 on your project structure. File -> Project structure -> Project -> SDK -> JDK 17 version
+7. Run
+8. Go to browser and enter port such as, http://localhost:8080/("ending" such as "user" if you have provided @GetMapping("/user") in the controller component,)(you can view port number on console or can change it on application.properties file on resources by : server.port = 9001)
+9. Using actuators, go to browser and search , localhost:8080/actuator/health (for further, paste the code on application.properties: management.endpoints.web.exposure.include=info,health,metrics,loggers,env,beans,mappings and search localhost:8080/actuator/env)
