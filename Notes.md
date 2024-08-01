@@ -54,7 +54,7 @@ The greeting method is annotated with @GetMapping to handle GET requests to the 
 
 The method returns a simple string, which will be converted to JSON and sent as the response body.
 
-- @Autowired - to get instance of the class.
+- @Autowired - to get instance of the class. While @Autowired can be used to create an instance of a class, it's more accurate to say that it's used to inject an existing instance of a class into another class.
 - @Repository - specialization of @Component annotation and is used to indicate that the class provides mechanicsm for storage, retrieval, update, delete and search operation on objects.
 - @Entity -  to map domain objects to relational database tables. Marks a class as a database table.
 - @Getter - Generates a getter method for a field.
@@ -88,3 +88,30 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - It follows Object-Relation Mapping(ORM).
 - Provides runtime EntityManager API for processing queries and transaction on the object against database.
 - Uses JPQL(Java Persistent Query Language).
+
+### Key components of a Spring Boot Application
+#### Entities
+- Represent data objects that correspond to database tables.
+- Annotated with @Entity for JPA to recognize them.
+- Examples: User, Product, Order.
+#### Repositories
+- Provide a mechanism to interact with the database.
+- Annotated with @Repository.
+- Define methods for CRUD operations (Create, Read, Update, Delete).
+- Often use Spring Data JPA for implementation.
+- Example: UserRepository, ProductRepository.
+##### Note : Optional is a container class in Java that represents a value which may or may not be present. It provides a safe way to handle potential null values.
+#### Controllers
+- Handle incoming requests and return responses.
+- Define endpoints and map HTTP methods (GET, POST, PUT, DELETE).
+- Coordinate interactions between the view, service, and repository layers.
+- Annotated with @Controller or @RestController.
+- Example: UserController, ProductController.
+#### Models
+- Represent data structures used for transferring data between layers.
+- Not strictly required but can improve code organization.
+- Example: UserDto, ProductDto.
+#### Services
+- Contain business logic.
+- Annotated with @Service.
+- Example: UserService, ProductService.
