@@ -28,7 +28,7 @@ Some key projects under the Spring umbrella include:
 
 @EnableAutoConfiguration: Enables Spring Boot's auto-configuration mechanism, which automatically configures beans based on classpath dependencies.
 
-- @RestController is a specialized annotation in Spring Framework primarily used for developing RESTful web services. It serves as a convenient shorthand for combining two other annotations:
+- @RestController is a specialized annotation in Spring Framework primarily used for developing RESTful web services(RESTful Web Service is a type of web service that follows the Representational State Transfer (REST) architectural style). It serves as a convenient shorthand for combining two other annotations:
 
 @Controller: Indicates that the class is a controller, capable of handling web requests.
 
@@ -54,6 +54,11 @@ The greeting method is annotated with @GetMapping to handle GET requests to the 
 
 The method returns a simple string, which will be converted to JSON and sent as the response body.
 
+- @Autowired - to get instance of the class.
+- @Repository - specialization of @Component annotation and is used to indicate that the class provides mechanicsm for storage, retrieval, update, delete and search operation on objects.
+- @Entity -  to map domain objects to relational database tables.
+- @Service - to mark a class as a service provider, in which the class will provide business functionalities.
+
 ### Steps to follow
 
 1. Go to Spring Initializr
@@ -65,3 +70,10 @@ The method returns a simple string, which will be converted to JSON and sent as 
 7. Run
 8. Go to browser and enter port such as, http://localhost:8080/("ending" such as "user" if you have provided @GetMapping("/user") in the controller component,)(you can view port number on console or can change it on application.properties file on resources by : server.port = 9001)
 9. Using actuators, go to browser and search , localhost:8080/actuator/health (for further, paste the code on application.properties: management.endpoints.web.exposure.include=info,health,metrics,loggers,env,beans,mappings and search localhost:8080/actuator/env)
+
+### Spring Boot JPA
+- For managing relational data in our java application.
+- Allows to access and persist data between java objects/classes and realtional database.
+- It follows Object-Relation Mapping(ORM).
+- Provides runtime EntityManager API for processing queries and transaction on the object against database.
+- Uses JPQL(Java Persistent Query Language).
