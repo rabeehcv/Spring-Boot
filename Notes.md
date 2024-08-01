@@ -69,6 +69,7 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @GetMapping("/findbyid/{id}"): This annotation defines a GET HTTP method endpoint with the path /findbyid/{id}. The {id} part is a path variable.
 - @PatchMapping("/update"): This annotation defines a PATCH HTTP method endpoint with the path /update.
 - @DeleteMapping("/delete/{id}"): This annotation defines a DELETE HTTP method endpoint with the path /delete/{id}. The {id} part is a path variable.
+- @Component: This annotation from Spring indicates that this class is a component and can be managed by the Spring container. This means it's eligible for autowiring into other components.
 - @Service - to mark a class as a service provider, in which the class will provide business functionalities.
 
 ### Steps to follow
