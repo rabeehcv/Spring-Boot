@@ -71,6 +71,8 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @DeleteMapping("/delete/{id}"): This annotation defines a DELETE HTTP method endpoint with the path /delete/{id}. The {id} part is a path variable.
 - @Component: This annotation from Spring indicates that this class is a component and can be managed by the Spring container. This means it's eligible for autowiring into other components.
 - @Service - to mark a class as a service provider, in which the class will provide business functionalities.
+- @Query Annotation: This annotation tells Spring Data JPA that the following method defines a custom JPQL query instead of relying on the default methods provided by JpaRepository.
+
 
 ### Steps to follow
 
