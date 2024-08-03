@@ -72,6 +72,12 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @Component: This annotation from Spring indicates that this class is a component and can be managed by the Spring container. This means it's eligible for autowiring into other components.
 - @Service - to mark a class as a service provider, in which the class will provide business functionalities.
 - @Query Annotation: This annotation tells Spring Data JPA that the following method defines a custom JPQL query instead of relying on the default methods provided by JpaRepository.
+- @EnableJpaAuditing: By adding @EnableJpaAuditing to main application class, you enable JPA auditing for your entire Spring Boot application.
+- @EntityListeners(AuditingEntityListener.class) in entity class to ensure that the auditing fields are automatically populated.
+- @CreatedDate: This annotation is used on a field to automatically store the timestamp when an entity is created.
+- @LastModifiedDate: This annotation is used on a field to automatically store the timestamp when an entity is last modified.
+- @CreatedBy: This annotation is used on a field to automatically store the user who created the entity (requires AuditorAware).
+- @LastModifiedBy: This annotation is used on a field to automatically store the user who last modified the entity (requires AuditorAware).
 
 
 ### Steps to follow
