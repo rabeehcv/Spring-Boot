@@ -129,3 +129,9 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - Contain business logic.
 - Annotated with @Service.
 - Example: UserService, ProductService.
+
+### Dependency injection
+- Dependency injection is used to make a class independent of its dependencies or to create a loosely coupled program.
+- It means that a class doesn't create its dependencies itself, but receives them from an external source.
+- Loose coupling implies that components can be changed independently without affecting other components.
+- Useful for improving the reusability of code.
