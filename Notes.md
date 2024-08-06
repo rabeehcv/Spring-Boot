@@ -28,7 +28,7 @@ Some key projects under the Spring umbrella include:
 
 @EnableAutoConfiguration: Enables Spring Boot's auto-configuration mechanism, which automatically configures beans based on classpath dependencies.
 
-- @RestController is a specialized annotation in Spring Framework primarily used for developing RESTful web services. It serves as a convenient shorthand for combining two other annotations:
+- @RestController is a specialized annotation in Spring Framework primarily used for developing RESTful web services(RESTful Web Service is a type of web service that follows the Representational State Transfer (REST) architectural style). It serves as a convenient shorthand for combining two other annotations:
 
 @Controller: Indicates that the class is a controller, capable of handling web requests.
 
@@ -54,6 +54,32 @@ The greeting method is annotated with @GetMapping to handle GET requests to the 
 
 The method returns a simple string, which will be converted to JSON and sent as the response body.
 
+- @Autowired - to get instance of the class. While @Autowired can be used to create an instance of a class, it's more accurate to say that it's used to inject an existing instance of a class into another class.
+- @Repository - specialization of @Component annotation and is used to indicate that the class provides mechanicsm for storage, retrieval, update, delete and search operation on objects.
+- @Entity -  to map domain objects to relational database tables. Marks a class as a database table.
+- @Getter - Generates a getter method for a field.
+- @Setter - Generates a setter method for a field.
+- @Table: Maps a Java class to a database table. Allows customization of table name and schema, essential for complex database structures.
+- @Column: Maps a Java field to a database column. Enables precise mapping of fields to columns, including column name, data type, and constraints.
+- @Id - marks a field as a primary key of an entity.
+- @GeneratedValue: Automatically generates values for primary key fields.
+- @PrePersist: used on a method to indicate that it should be called before an entity is persisted to the database.
+- @PostMapping("/create"): This annotation defines a POST HTTP method endpoint with the path /create.
+- @GetMapping("/findall"): This annotation defines a GET HTTP method endpoint with the path /findall.
+- @GetMapping("/findbyid/{id}"): This annotation defines a GET HTTP method endpoint with the path /findbyid/{id}. The {id} part is a path variable.
+- @PatchMapping("/update"): This annotation defines a PATCH HTTP method endpoint with the path /update.
+- @DeleteMapping("/delete/{id}"): This annotation defines a DELETE HTTP method endpoint with the path /delete/{id}. The {id} part is a path variable.
+- @Component: This annotation from Spring indicates that this class is a component and can be managed by the Spring container. This means it's eligible for autowiring into other components.
+- @Service - to mark a class as a service provider, in which the class will provide business functionalities.
+- @Query Annotation: This annotation tells Spring Data JPA that the following method defines a custom JPQL query instead of relying on the default methods provided by JpaRepository.
+- @EnableJpaAuditing: By adding @EnableJpaAuditing to main application class, you enable JPA auditing for your entire Spring Boot application.
+- @EntityListeners(AuditingEntityListener.class) in entity class to ensure that the auditing fields are automatically populated.
+- @CreatedDate: This annotation is used on a field to automatically store the timestamp when an entity is created.
+- @LastModifiedDate: This annotation is used on a field to automatically store the timestamp when an entity is last modified.
+- @CreatedBy: This annotation is used on a field to automatically store the user who created the entity (requires AuditorAware).
+- @LastModifiedBy: This annotation is used on a field to automatically store the user who last modified the entity (requires AuditorAware).
+
+
 ### Steps to follow
 
 1. Go to Spring Initializr
@@ -65,3 +91,41 @@ The method returns a simple string, which will be converted to JSON and sent as 
 7. Run
 8. Go to browser and enter port such as, http://localhost:8080/("ending" such as "user" if you have provided @GetMapping("/user") in the controller component,)(you can view port number on console or can change it on application.properties file on resources by : server.port = 9001)
 9. Using actuators, go to browser and search , localhost:8080/actuator/health (for further, paste the code on application.properties: management.endpoints.web.exposure.include=info,health,metrics,loggers,env,beans,mappings and search localhost:8080/actuator/env)
+
+### Dependencies
+- Spring web - provides essential components for building web applications, including RESTful services. It simplifies the setup process by automatically including necessary dependencies and configurations.
+- Lombok - Java library that helps you reduce boilerplate code. It provides annotations that generate commonly used code snippets like getters, setters, constructors,etc. 
+- Spring Data JPA - for using Spring Data JPA in Spring Boot application.
+### Spring Boot JPA
+- For managing relational data in our java application.
+- Allows to access and persist data between java objects/classes and realtional database.
+- It follows Object-Relation Mapping(ORM).
+- Provides runtime EntityManager API for processing queries and transaction on the object against database.
+- Uses JPQL(Java Persistent Query Language).
+
+### Key components of a Spring Boot Application
+#### Entities
+- Represent data objects that correspond to database tables.
+- Annotated with @Entity for JPA to recognize them.
+- Examples: User, Product, Order.
+#### Repositories
+- Provide a mechanism to interact with the database.
+- Annotated with @Repository.
+- Define methods for CRUD operations (Create, Read, Update, Delete).
+- Often use Spring Data JPA for implementation.
+- Example: UserRepository, ProductRepository.
+##### Note : Optional is a container class in Java that represents a value which may or may not be present. It provides a safe way to handle potential null values.
+#### Controllers
+- Handle incoming requests and return responses.
+- Define endpoints and map HTTP methods (GET, POST, PUT, DELETE).
+- Coordinate interactions between the view, service, and repository layers.
+- Annotated with @Controller or @RestController.
+- Example: UserController, ProductController.
+#### Models
+- Represent data structures used for transferring data between layers.
+- Not strictly required but can improve code organization.
+- Example: UserDto, ProductDto.
+#### Services
+- Contain business logic.
+- Annotated with @Service.
+- Example: UserService, ProductService.
