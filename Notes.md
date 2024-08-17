@@ -96,6 +96,8 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - Spring web - provides essential components for building web applications, including RESTful services. It simplifies the setup process by automatically including necessary dependencies and configurations.
 - Lombok - Java library that helps you reduce boilerplate code. It provides annotations that generate commonly used code snippets like getters, setters, constructors,etc. 
 - Spring Data JPA - for using Spring Data JPA in Spring Boot application.
+- Spring Data MongoDB - provides support for integrating MongoDB, a popular NoSQL database, with Spring-based applications.
+- Spring Boot DevTools - to enhance the development experience by providing a set of tools. These tools streamline the development workflow, offering features like automatic restarts, live reload, and enhanced logging.
 ### Spring Boot JPA
 - For managing relational data in our java application.
 - Allows to access and persist data between java objects/classes and realtional database.
