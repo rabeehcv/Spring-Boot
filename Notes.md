@@ -78,6 +78,12 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @LastModifiedDate: This annotation is used on a field to automatically store the timestamp when an entity is last modified.
 - @CreatedBy: This annotation is used on a field to automatically store the user who created the entity (requires AuditorAware).
 - @LastModifiedBy: This annotation is used on a field to automatically store the user who last modified the entity (requires AuditorAware).
+- @Document: to mark a Java class as a MongoDB document, meaning that instances of the class will be mapped to documents in a MongoDB collection.
+- @Data: combines several commonly used annotations(such as @Getter, @Setter, @toString, etc) into one.
+- @AllArgsConstructor: Generates a constructor that takes arguments for all fields in the class, allowing to initialize an instance with all properties set.
+- @NoArgsConstructor: generates a no-argument constructor for class.
+- @DocumentReference: to create references between documents in different collections (similar to foreign key relationships in relational databases).
+- 
 
 
 ### Steps to follow
