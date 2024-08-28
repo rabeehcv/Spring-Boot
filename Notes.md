@@ -64,6 +64,7 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @Id - marks a field as a primary key of an entity.
 - @GeneratedValue: Automatically generates values for primary key fields.
 - @PrePersist: used on a method to indicate that it should be called before an entity is persisted to the database.
+- @RequestMapping: used to map HTTP requests to handler methods in a controller.
 - @PostMapping("/create"): This annotation defines a POST HTTP method endpoint with the path /create.
 - @GetMapping("/findall"): This annotation defines a GET HTTP method endpoint with the path /findall.
 - @GetMapping("/findbyid/{id}"): This annotation defines a GET HTTP method endpoint with the path /findbyid/{id}. The {id} part is a path variable.
@@ -138,6 +139,8 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - Annotated with @Service.
 - Example: UserService, ProductService.
 
+### ResponseEntity
+A Spring class that represents the whole HTTP response, including status code, headers, and body
 ### Dependency injection
 - Dependency injection is used to make a class independent of its dependencies or to create a loosely coupled program.
 - It means that a class doesn't create its dependencies itself, but receives them from an external source.
