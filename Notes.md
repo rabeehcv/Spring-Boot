@@ -84,7 +84,7 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @AllArgsConstructor: Generates a constructor that takes arguments for all fields in the class, allowing to initialize an instance with all properties set.
 - @NoArgsConstructor: generates a no-argument constructor for class.
 - @DocumentReference: to create references between documents in different collections (similar to foreign key relationships in relational databases).
-- 
+- @EnableWebSecurity: This annotation is used to enable Spring Security’s web security capabilities in the application. It tells Spring that this class contains the configuration for web security.
 
 
 ### Steps to follow
@@ -111,6 +111,11 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - It follows Object-Relation Mapping(ORM).
 - Provides runtime EntityManager API for processing queries and transaction on the object against database.
 - Uses JPQL(Java Persistent Query Language).
+
+### Additional Notes
+#### When We Might Need a No-Argument Constructor in our entity class
+If we Add a Parameterized Constructor that takes arguments (e.g., to initialize fields at creation), Java will stop generating the default no-argument constructor. In such cases, we might want to explicitly include a no-argument constructor if some frameworks or libraries (like JPA) require it.
+Framework Requirements: Some frameworks like JPA expect a no-argument constructor to be present to create instances of the entity class through reflection. However, Java automatically generates one unless we provide another constructor.
 
 ### Key components of a Spring Boot Application
 #### Entities
