@@ -85,6 +85,7 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @NoArgsConstructor: generates a no-argument constructor for class.
 - @DocumentReference: to create references between documents in different collections (similar to foreign key relationships in relational databases).
 - @EnableWebSecurity: This annotation is used to enable Spring Security’s web security capabilities in the application. It tells Spring that this class contains the configuration for web security.
+- @Enumerated: used with fields that are of an enum type. It tells the persistence provider (like Hibernate in a Spring application) how to store the enum values in the database.
 
 
 ### Steps to follow
@@ -151,3 +152,6 @@ A Spring class that represents the whole HTTP response, including status code, h
 - It means that a class doesn't create its dependencies itself, but receives them from an external source.
 - Loose coupling implies that components can be changed independently without affecting other components.
 - Useful for improving the reusability of code.
+
+### Hibernate
+Object-Relational Mapping (ORM) framework for Java that is often used in Spring Boot applications to maps Java objects to database tables and vice versa. Automatically generate SQL queries based on the mappings and execute them
