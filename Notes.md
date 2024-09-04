@@ -148,6 +148,7 @@ Framework Requirements: Some frameworks like JPA expect a no-argument constructo
 
 ### ResponseEntity
 A Spring class that represents the whole HTTP response, including status code, headers, and body
+
 ### Dependency injection
 - Dependency injection is used to make a class independent of its dependencies or to create a loosely coupled program.
 - It means that a class doesn't create its dependencies itself, but receives them from an external source.
@@ -209,3 +210,11 @@ The @Bean annotation tells Spring that this method returns an object that should
 The method will return an instance of the PasswordEncoder interface, which is a Spring Security interface for encoding passwords.
 
 Returns a new instance of BCryptPasswordEncoder, which is an implementation of the PasswordEncoder interface, to hash passwords using the BCrypt hashing algorithm.
+
+#### Authentication
+- AuthenticationManager: Manages the authentication process.
+- AuthenticationConfiguration: Provides configuration for the AuthenticationManager.
+- Authentication: Represents the authentication token.
+- SecurityContextHolder: Stores security context information, such as the currently authenticated user.
+- UsernamePasswordAuthenticationToken: A token representing the username and password. This token is passed to the authenticationManager.
+- authenticationManager.authenticate(...): The authentication manager attempts to authenticate the token. If successful, an Authentication object is returned.
