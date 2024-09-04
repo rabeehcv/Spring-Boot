@@ -84,8 +84,9 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @AllArgsConstructor: Generates a constructor that takes arguments for all fields in the class, allowing to initialize an instance with all properties set.
 - @NoArgsConstructor: generates a no-argument constructor for class.
 - @DocumentReference: to create references between documents in different collections (similar to foreign key relationships in relational databases).
-- @EnableWebSecurity: This annotation is used to enable Spring Security’s web security capabilities in the application. It tells Spring that this class contains the configuration for web security.
+- @EnableWebSecurity: This annotation is used to enable Spring Security’s web security capabilities in the application. It tells Spring that this class contains the configuration for web security. Use @EnableWebSecurity for configuring web security (securing HTTP requests).
 - @Enumerated: used with fields that are of an enum type. It tells the persistence provider (like Hibernate in a Spring application) how to store the enum values in the database.
+- @EnableMethodSecurity is used when you want to secure individual methods within your services or controllers, providing finer control over security. Use @EnableMethodSecurity for enabling method-level security (securing service or controller methods). This allows us to use security annotations like @PreAuthorize, @PostAuthorize, @Secured, and others on methods to control access based on roles, permissions, or other criteria.
 
 
 ### Steps to follow
@@ -155,3 +156,56 @@ A Spring class that represents the whole HTTP response, including status code, h
 
 ### Hibernate
 Object-Relational Mapping (ORM) framework for Java that is often used in Spring Boot applications to maps Java objects to database tables and vice versa. Automatically generate SQL queries based on the mappings and execute them
+
+### Spring Security
+- GrantedAuthority and SimpleGrantedAuthority are Spring Security classes that represent the roles and permissions granted to the user.
+- UserDetails is an interface provided by Spring Security that provides the necessary information to build an Authentication object.Defines methods for retrieving user-specific data.
+
+#### getAuthority() 
+```
+@Override
+public Collection<? extends GrantedAuthority> getAuthorities() {
+    return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + role.name()));
+}
+```
+getAuthorities() method in the CustomUserDetails class is used to return the roles (or authorities) assigned to the user. The method constructs a SimpleGrantedAuthority object that encapsulates the role, prefixes it with "ROLE_", and returns it within a Set. This setup allows Spring Security to manage access control based on the roles assigned to the user.
+
+#### Security Configuration
+- The SecurityConfig class  annotated with @Configuration and @EnableMethodSecurity means it's a configuration class that enables Spring Security's method-level security features.
+```
+csrf(csrf -> csrf.disable())
+```
+Disables Cross-Site Request Forgery (CSRF) protection. CSRF protection is crucial for stateful web applications that use cookies for session management. However, it is often disabled for REST APIs since they are typically stateless and do not use sessions.
+```
+authorizeHttpRequests(auth -> auth...)
+```
+Specifies how requests to the application are authorized.
+```
+.requestMatchers("/users/create", "/auth/**").permitAll()
+```
+Allows anyone to access the /users/create and /auth/** endpoints without authentication.
+```
+.anyRequest().authenticated()
+```
+Requires authentication for any other request to the application.
+```
+.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+```
+Configures how sessions are managed in the application.
+
+SessionCreationPolicy.STATELESS: Ensures that no HTTP session is created or used by Spring Security. This is typical for stateless REST APIs where each request should contain all necessary information for authentication (e.g., via tokens).
+```
+httpBasic()
+```
+Enables HTTP Basic authentication. In Basic Authentication, the client sends the username and password with every request, typically encoded in a base64 format in the Authorization header.
+```
+@Bean
+public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+}
+```
+The @Bean annotation tells Spring that this method returns an object that should be registered as a bean in the Spring application context. Beans are managed by Spring, and they can be injected into other parts of your application using dependency injection. 
+
+The method will return an instance of the PasswordEncoder interface, which is a Spring Security interface for encoding passwords.
+
+Returns a new instance of BCryptPasswordEncoder, which is an implementation of the PasswordEncoder interface, to hash passwords using the BCrypt hashing algorithm.
