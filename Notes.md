@@ -86,7 +86,8 @@ The method returns a simple string, which will be converted to JSON and sent as 
 - @DocumentReference: to create references between documents in different collections (similar to foreign key relationships in relational databases).
 - @EnableWebSecurity: This annotation is used to enable Spring Security’s web security capabilities in the application. It tells Spring that this class contains the configuration for web security. Use @EnableWebSecurity for configuring web security (securing HTTP requests).
 - @Enumerated: used with fields that are of an enum type. It tells the persistence provider (like Hibernate in a Spring application) how to store the enum values in the database.
-- @EnableMethodSecurity is used when you want to secure individual methods within your services or controllers, providing finer control over security. Use @EnableMethodSecurity for enabling method-level security (securing service or controller methods). This allows us to use security annotations like @PreAuthorize, @PostAuthorize, @Secured, and others on methods to control access based on roles, permissions, or other criteria.
+- @EnableMethodSecurity: is used when you want to secure individual methods within your services or controllers, providing finer control over security. Use @EnableMethodSecurity for enabling method-level security (securing service or controller methods). This allows us to use security annotations like @PreAuthorize, @PostAuthorize, @Secured, and others on methods to control access based on roles, permissions, or other criteria.
+- @JsonIgnore is used to prevent specific fields in a class from being serialized or deserialized during the process of converting Java objects to JSON (or vice versa). This is especially useful in situations where including certain fields might cause issues like infinite recursion, data redundancy, or exposing sensitive information.
 
 
 ### Steps to follow
