@@ -219,3 +219,11 @@ Returns a new instance of BCryptPasswordEncoder, which is an implementation of t
 - SecurityContextHolder: Stores security context information, such as the currently authenticated user.
 - UsernamePasswordAuthenticationToken: A token representing the username and password. This token is passed to the authenticationManager.
 - authenticationManager.authenticate(...): The authentication manager attempts to authenticate the token. If successful, an Authentication object is returned.
+
+#### Work flow of Basic Authentication
+- Authentication Filter: This is the initial step in the authentication process. The filter intercepts HTTP requests and extracts authentication information (such as the Authorization header containing the Base64-encoded credentials) and decodes it into the original format, which is username:password. After decoding the credentials, the filter creates an Authentication object, such as UsernamePasswordAuthenticationToken, containing the username and password.
+This Authentication object is then passed to the AuthenticationManager.
+
+- Authentication Manager: This central component manages the entire authentication process. It receives the authentication request from the filter and delegates the task of validating the credentials to an AuthenticationProvider. If authentication is successful, it returns an Authentication object; otherwise, it throws an exception.
+
+- Authentication Provider: The AuthenticationProvider is responsible for performing the actual authentication. It compares the credentials (such as username and password) against stored data, such as a database, and returns an Authentication object if the credentials are valid. It uses services like UserDetailsService for retrieving user data and PasswordEncoder for password validation.
